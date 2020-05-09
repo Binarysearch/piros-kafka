@@ -2,7 +2,7 @@ import { KafkaClient, Consumer } from 'kafka-node';
 import { CONTROLLERS, CONSUMERS } from './consume';
 import { Injector } from '@piros/ioc';
 
-export function startKafka(): void {
+export function connectKafka(): void {
 
     const clients: Map<string, KafkaClient> = new Map();
 

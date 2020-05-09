@@ -1,6 +1,6 @@
 import { KafkaController, Consume, Message, DoneFunc } from './consume';
 import { Injectable } from '@piros/ioc';
-import { startKafka } from './application';
+import { connectKafka } from './application';
 
 @Injectable
 class A {
@@ -28,4 +28,4 @@ export class Prueba {
 }
 
 
-startKafka();
+connectKafka();
