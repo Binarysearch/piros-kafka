@@ -1,20 +1,15 @@
-import { KafkaClient, Consumer } from 'kafka-node';
+import { Consumer } from 'kafka-node';
 import { CONTROLLERS, CONSUMERS } from './consume';
 import { Injector } from '@piros/ioc';
+import { ClientManager } from './client-manager';
 
 export function connectKafka(): void {
 
-    const clients: Map<string, KafkaClient> = new Map();
+    const clientManager = Injector.resolve(ClientManager);
 
     CONSUMERS.forEach(c => {
     
-        let client = clients.get(c.host);
-        if (!client) {
-            client = new KafkaClient({
-                kafkaHost: c.host
-            });
-            clients.set(c.host, client);
-        }
+        const client = clientManager.getClient(c.host);
 
         const constructor = CONTROLLERS.get(c.controller);
         const controller = Injector.resolve(constructor);
