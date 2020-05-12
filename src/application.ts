@@ -28,7 +28,11 @@ export function connectKafka(injector: Injector): void {
         consumer.on('message', (message) => {
             method(message, (cb) => {
                 setTimeout(() => {
-                    consumer.commit(cb);
+                    if (cb) {
+                        consumer.commit(cb);
+                    } else {
+                        consumer.commit(() => {});
+                    }
                 }, 0);
             });
         });
