@@ -7,9 +7,9 @@ export const CONTROLLERS: Map<Object, Type<any>> = new Map();
 
 export type DoneFunc = (cb?: (error: any, data: any) => void) => void;
 
-export interface Message {
+export interface Message<T> {
     topic: string;
-    value: string | Buffer;
+    value: T;
     offset?: number;
     partition?: number;
     highWaterOffset?: number;

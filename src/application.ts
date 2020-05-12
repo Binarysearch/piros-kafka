@@ -1,5 +1,5 @@
 import { Consumer } from 'kafka-node';
-import { CONTROLLERS, CONSUMERS } from './consume';
+import { CONTROLLERS, CONSUMERS, Message } from './consume';
 import { Injector } from '@piros/ioc';
 import { ClientManager } from './client-manager';
 
@@ -25,7 +25,16 @@ export function connectKafka(injector: Injector): void {
         
         const method = c.method.bind(controller);
     
-        consumer.on('message', (message) => {
+        consumer.on('message', (kafkaMessage) => {
+            const message: Message<any> = {
+                topic: kafkaMessage.topic,
+                offset: kafkaMessage.offset,
+                partition: kafkaMessage.partition,
+                highWaterOffset: kafkaMessage.highWaterOffset,
+                key: kafkaMessage.key,
+                value: JSON.parse(kafkaMessage.value.toString())
+            }
+
             method(message, (cb) => {
                 setTimeout(() => {
                     if (cb) {
