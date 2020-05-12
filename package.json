@@ -1,6 +1,6 @@
 {
   "name": "@piros/kafka",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/Binarysearch/piros-kafka#readme",
   "dependencies": {
-    "@piros/ioc": "0.0.4",
+    "@piros/ioc": "0.0.5",
     "kafka-node": "^5.0.0",
     "rxjs": "^6.5.5",
     "typescript": "^3.8.3"
