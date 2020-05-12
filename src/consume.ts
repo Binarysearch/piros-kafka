@@ -1,6 +1,6 @@
 
 import 'reflect-metadata';
-import { Type, Injector } from '@piros/ioc';
+import { Type } from '@piros/ioc';
 
 export const CONSUMERS: Set<ConsumerMapping> = new Set();
 export const CONTROLLERS: Map<Object, Type<any>> = new Map();
