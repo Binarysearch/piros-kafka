@@ -29,6 +29,6 @@
   "devDependencies": {
     "@types/kafka-node": "^3.0.0",
     "@types/node": "^13.13.5",
-    "ts-loader": "^7.0.0"
+    "ts-loader": "^9.4.2"
   }
 }
